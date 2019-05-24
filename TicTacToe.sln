@@ -1,7 +1,9 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe.csproj", "{66D2CDC3-06C6-4D9D-936C-FF7B2327C454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{73C018A7-6856-4DB4-9F88-C8106FF8B752}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +15,9 @@ Global
 		{66D2CDC3-06C6-4D9D-936C-FF7B2327C454}.Debug|x86.Build.0 = Debug|x86
 		{66D2CDC3-06C6-4D9D-936C-FF7B2327C454}.Release|x86.ActiveCfg = Release|x86
 		{66D2CDC3-06C6-4D9D-936C-FF7B2327C454}.Release|x86.Build.0 = Release|x86
+		{73C018A7-6856-4DB4-9F88-C8106FF8B752}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{73C018A7-6856-4DB4-9F88-C8106FF8B752}.Debug|x86.Build.0 = Debug|Any CPU
+		{73C018A7-6856-4DB4-9F88-C8106FF8B752}.Release|x86.ActiveCfg = Release|Any CPU
+		{73C018A7-6856-4DB4-9F88-C8106FF8B752}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
