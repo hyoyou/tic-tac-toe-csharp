@@ -1,3 +1,5 @@
+using System;
+
 namespace TicTacToe
 {
     public class Board
@@ -13,6 +15,22 @@ namespace TicTacToe
         public void DisplayBoard()
         {
             _writer.PrintBoard(boardArr);
+        }
+
+        public char[] MakeMove(int cell, char playerSymbol)
+        {
+            boardArr[cell - 1] = playerSymbol;
+            return boardArr;
+        }
+        
+        public char[] Spaces()
+        {
+            return boardArr;
+        }
+        
+        public char Space(int cell)
+        {
+            return boardArr[cell - 1];
         }
     }
 }
