@@ -34,5 +34,19 @@ namespace TicTacToe
         {
             return BoardList[cell - 1];
         }
+
+        public int TurnCount()
+        {
+            int count = 0;
+            
+            foreach (object o in BoardList)
+            {
+                if (o is char) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
 }

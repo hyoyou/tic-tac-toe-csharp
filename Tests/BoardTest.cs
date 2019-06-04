@@ -81,5 +81,38 @@ namespace Tests
 
             Assert.AreEqual(expected, actual);
         }
+        
+        [Test]
+        public void ReturnsTurnCount0WhenThereAreNoMoves()
+        {
+            var actual = _board.TurnCount();
+            int expected = 0;
+
+            Assert.AreEqual(expected, actual);
+        }
+        
+        [Test]
+        public void ReturnsTurnCount1WhenThereIs1Move()
+        {
+            _board.MakeMove(5, 'X');
+            var actual = _board.TurnCount();
+            int expected = 1;
+
+            Assert.AreEqual(expected, actual);
+        }
+        
+        [Test]
+        public void ReturnsTurnCount5WhenThereAre5Moves()
+        {
+            _board.MakeMove(1, 'X');
+            _board.MakeMove(2, 'O');
+            _board.MakeMove(3, 'X');
+            _board.MakeMove(4, 'O');
+            _board.MakeMove(5, 'X');
+            var actual = _board.TurnCount();
+            int expected = 5;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
