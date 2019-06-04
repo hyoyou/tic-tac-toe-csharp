@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TicTacToe
 {
@@ -10,13 +11,13 @@ namespace TicTacToe
             Console.WriteLine(s);
         }
         
-        public void PrintBoard(char[] boardState)
+        public void PrintBoard(List<object> boardList)
         {
-            Console.WriteLine(" {0} | {1} | {2} ", boardState[0], boardState[1], boardState[2]);
+            Console.WriteLine(" {0} | {1} | {2} ", boardList[0], boardList[1], boardList[2]);
             Console.WriteLine(" ===+===+===");
-            Console.WriteLine(" {3} | {4} | {5} ", boardState[3], boardState[4], boardState[5]);
+            Console.WriteLine(" {3} | {4} | {5} ", boardList[3], boardList[4], boardList[5]);
             Console.WriteLine(" ===+===+===");
-            Console.WriteLine(" {6} | {7} | {8} ", boardState[6], boardState[7], boardState[8]);
+            Console.WriteLine(" {6} | {7} | {8} ", boardList[6], boardList[7], boardList[8]);
         }
     }
 }

@@ -1,36 +1,38 @@
 using System;
+using System.Collections.Generic;
 
 namespace TicTacToe
 {
     public class Board
     {
         private static IConsoleWriter _writer;
-        static char[] boardArr = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        private static List<object> BoardList;
 
         public Board(IConsoleWriter IWriter)
         {
+            BoardList = new List<object>(){ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             _writer = IWriter;
         }
         
         public void DisplayBoard()
         {
-            _writer.PrintBoard(boardArr);
+            _writer.PrintBoard(BoardList);
         }
 
-        public char[] MakeMove(int cell, char playerSymbol)
+        public List<object> MakeMove(int cell, char playerSymbol)
         {
-            boardArr[cell - 1] = playerSymbol;
-            return boardArr;
+            BoardList[cell - 1] = playerSymbol;
+            return BoardList;
         }
         
-        public char[] Spaces()
+        public List<object> Spaces()
         {
-            return boardArr;
+            return BoardList;
         }
         
-        public char Space(int cell)
+        public object Space(int cell)
         {
-            return boardArr[cell - 1];
+            return BoardList[cell - 1];
         }
     }
 }

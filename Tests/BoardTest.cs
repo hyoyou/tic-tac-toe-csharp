@@ -37,7 +37,7 @@ namespace Tests
         public void ReturnsAnEmptyBoardAsAnArray()
         {
             var actual = _board.Spaces();
-            char[] expected = { '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            object[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, actual);
         }
@@ -47,7 +47,7 @@ namespace Tests
         {
             _board.MakeMove(5, 'X');
             var actual = _board.Spaces();
-            char[] expected = { '1', '2', '3', '4', 'X', '6', '7', '8', '9' };
+            object[] expected = { 1, 2, 3, 4, 'X', 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, actual);
         }
@@ -58,7 +58,7 @@ namespace Tests
             _board.MakeMove(5, 'X');
             _board.MakeMove(1, 'O');
             var actual = _board.Spaces();
-            char[] expected = { 'O', '2', '3', '4', 'X', '6', '7', '8', '9' };
+            object[] expected = { 'O', 2, 3, 4, 'X', 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, actual);
         }
@@ -67,7 +67,7 @@ namespace Tests
         public void ReturnsContentOfCellThatIsEmpty()
         {
             var actual = _board.Space(5);
-            char expected = '5';
+            int expected = 5;
 
             Assert.AreEqual(expected, actual);
         }
