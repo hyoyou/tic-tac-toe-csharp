@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+
 namespace TicTacToe
 {
     public interface IConsoleWriter
     {
         void WriteLine(string s);
-        void PrintBoard(char[] board);
+        void PrintBoard(List<object> boardList);
     }
 }

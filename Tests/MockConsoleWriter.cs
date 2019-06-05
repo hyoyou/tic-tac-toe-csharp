@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TicTacToe;
 
 namespace Tests
@@ -16,13 +17,13 @@ namespace Tests
             LastOutput += s;
         }
         
-        public void PrintBoard(char[] boardState)
+        public void PrintBoard(List<object> boardList)
         {
-            LastOutput += $" {boardState[0]} | {boardState[1]} | {boardState[2]} ";
+            LastOutput += $" {boardList[0]} | {boardList[1]} | {boardList[2]} ";
             LastOutput += " ===+===+=== ";
-            LastOutput += $" {boardState[3]} | {boardState[4]} | {boardState[5]} ";
+            LastOutput += $" {boardList[3]} | {boardList[4]} | {boardList[5]} ";
             LastOutput += " ===+===+=== ";
-            LastOutput += $" {boardState[6]} | {boardState[7]} | {boardState[8]} ";
+            LastOutput += $" {boardList[6]} | {boardList[7]} | {boardList[8]} ";
         }
     }
 }
