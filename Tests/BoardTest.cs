@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using TicTacToe;
 
@@ -30,14 +30,14 @@ namespace Tests
             _board.DisplayBoard();
             var expected = @" 1 | 2 | 3  ===+===+===  4 | 5 | 6  ===+===+===  7 | 8 | 9 ";
 
-            Assert.AreEqual(expected, _writer.LastOutput );
+            Assert.AreEqual(expected, _writer.LastOutput);
         }
 
         [Test]
         public void ReturnsAnEmptyBoardAsAnArray()
         {
             var actual = _board.Spaces();
-            object[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<object> expected = new List<object>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, actual);
         }
@@ -47,7 +47,7 @@ namespace Tests
         {
             _board.MakeMove(5, 'X');
             var actual = _board.Spaces();
-            object[] expected = { 1, 2, 3, 4, 'X', 6, 7, 8, 9 };
+            List<object> expected = new List<object>{ 1, 2, 3, 4, 'X', 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, actual);
         }
@@ -58,7 +58,7 @@ namespace Tests
             _board.MakeMove(5, 'X');
             _board.MakeMove(1, 'O');
             var actual = _board.Spaces();
-            object[] expected = { 'O', 2, 3, 4, 'X', 6, 7, 8, 9 };
+            List<object> expected = new List<object>{ 'O', 2, 3, 4, 'X', 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, actual);
         }
@@ -78,6 +78,28 @@ namespace Tests
             _board.MakeMove(5, 'X');
             var actual = _board.Space(5);
             char expected = 'X';
+
+            Assert.AreEqual(expected, actual);
+        }
+        
+        [Test]
+        public void Returns9AvailableMovesWhenThereAreNoMovesMade()
+        {
+            var actual = _board.AvailableMoves();
+            List<object> expected = new List<object>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            Assert.AreEqual(expected, actual);
+        }
+        
+        [Test]
+        public void Returns5AvailableMovesWhenThereAre4MovesMade()
+        {
+            _board.MakeMove(1, 'X');
+            _board.MakeMove(2, 'O');
+            _board.MakeMove(3, 'X');
+            _board.MakeMove(4, 'O');
+            var actual = _board.AvailableMoves();
+            List<object> expected = new List<object>{ 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, actual);
         }

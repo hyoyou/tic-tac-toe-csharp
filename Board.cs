@@ -35,18 +35,24 @@ namespace TicTacToe
             return BoardList[cell - 1];
         }
 
-        public int TurnCount()
+        public List<object> AvailableMoves()
         {
-            int count = 0;
-            
-            foreach (object o in BoardList)
+            List<object> AvailableList = new List<object>();
+
+            foreach (object cell in BoardList)
             {
-                if (o is char) {
-                    count++;
+                if (cell is int)
+                {
+                    AvailableList.Add(cell);
                 }
             }
 
-            return count;
+            return AvailableList;
+        }
+
+        public int TurnCount()
+        {
+            return 9 - AvailableMoves().Count;
         }
     }
 }
