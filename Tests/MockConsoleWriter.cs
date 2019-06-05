@@ -25,5 +25,10 @@ namespace Tests
             LastOutput += " ===+===+=== ";
             LastOutput += $" {boardList[6]} | {boardList[7]} | {boardList[8]} ";
         }
+
+        public void AskForMove(char playerSymbol)
+        {
+            LastOutput = $"Player {playerSymbol}, please make your move:";
+        }
     }
 }

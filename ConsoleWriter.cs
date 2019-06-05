@@ -19,5 +19,10 @@ namespace TicTacToe
             Console.WriteLine(" ===+===+===");
             Console.WriteLine(" {6} | {7} | {8} ", boardList[6], boardList[7], boardList[8]);
         }
+
+        public void AskForMove(char playerSymbol)
+        {
+            Console.WriteLine($"Player {playerSymbol}, please make your move:");
+        }
     }
 }

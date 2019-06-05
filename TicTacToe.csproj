@@ -33,7 +33,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.cs" />
+    <Compile Include="ConsoleReader.cs" />
     <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="HumanPlayer.cs" />
+    <Compile Include="IConsoleReader.cs" />
     <Compile Include="IConsoleWriter.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />

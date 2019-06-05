@@ -6,5 +6,6 @@ namespace TicTacToe
     {
         void WriteLine(string s);
         void PrintBoard(List<object> boardList);
+        void AskForMove(char playerSymbol);
     }
 }
