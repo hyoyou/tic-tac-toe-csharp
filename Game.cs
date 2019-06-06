@@ -72,15 +72,15 @@ namespace TicTacToe
 
         private void PrintGameStatus()
         {
-            if (_rules.IsWon(_board.Spaces(), 'X'))
+            if (_rules.IsWon(_board.Spaces(), Constants.X))
             {
                 _board.DisplayBoard();
-                _writer.PrintCongratulations('X');
+                _writer.PrintCongratulations(Constants.X);
             }
-            else if (_rules.IsWon(_board.Spaces(), 'O'))
+            else if (_rules.IsWon(_board.Spaces(), Constants.O))
             {
                 _board.DisplayBoard();
-                _writer.PrintCongratulations('O');
+                _writer.PrintCongratulations(Constants.O);
             }
             else
             {

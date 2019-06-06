@@ -16,20 +16,20 @@ namespace Tests
         {
             _reader = new MockConsoleReader();
             _writer = new MockConsoleWriter();
-            _player1 = new HumanPlayer('X', _reader, _writer);
-            _player2 = new HumanPlayer('O', _reader, _writer);
+            _player1 = new HumanPlayer(Constants.X, _reader, _writer);
+            _player2 = new HumanPlayer(Constants.O, _reader, _writer);
         }
         
         [Test]
         public void Player1IsInitializedWithSymbolX()
         {
-            Assert.AreEqual('X', _player1.Symbol());
+            Assert.AreEqual(Constants.X, _player1.Symbol());
         }
         
         [Test]
         public void Player2IsInitializedWithSymbolO()
         {
-            Assert.AreEqual('O', _player2.Symbol());
+            Assert.AreEqual(Constants.O, _player2.Symbol());
         }
 
         [Test]

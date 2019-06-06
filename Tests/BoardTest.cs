@@ -44,10 +44,10 @@ namespace Tests
         [Test]
         public void ReturnsAnArrayWithMoves()
         {
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(1, 'O');
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(1, Constants.O);
             
-            var expected = new List<object>{ 'O', 2, 3, 4, 'X', 6, 7, 8, 9 };
+            var expected = new List<object>{ Constants.O, 2, 3, 4, Constants.X, 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, _board.Spaces());
         }
@@ -55,9 +55,9 @@ namespace Tests
         [Test]
         public void MakesPlayerMoveOnBoard()
         {
-            _board.MakeMove(5, 'X');
+            _board.MakeMove(5, Constants.X);
             
-            var expected = new List<object>{ 1, 2, 3, 4, 'X', 6, 7, 8, 9 };
+            var expected = new List<object>{ 1, 2, 3, 4, Constants.X, 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, _board.Spaces());
         }
@@ -65,8 +65,8 @@ namespace Tests
         [Test]
         public void ReturnsValidityOfPlayersMove()
         {
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(1, 'O');
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(1, Constants.O);
             
             Assert.False(_board.IsValidMove(5));
             Assert.False(_board.IsValidMove(1));
@@ -85,10 +85,10 @@ namespace Tests
         [Test]
         public void Returns5AvailableMovesWhenThereAre4MovesMade()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(3, 'X');
-            _board.MakeMove(4, 'O');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(4, Constants.O);
             
             var expected = new List<object>{ 5, 6, 7, 8, 9 };
 
@@ -104,7 +104,7 @@ namespace Tests
         [Test]
         public void ReturnsTurnCount1WhenThereIs1Move()
         {
-            _board.MakeMove(5, 'X');
+            _board.MakeMove(5, Constants.X);
 
             Assert.AreEqual(1, _board.TurnCount());
         }
@@ -112,11 +112,11 @@ namespace Tests
         [Test]
         public void ReturnsTurnCount5WhenThereAre5Moves()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(3, 'X');
-            _board.MakeMove(4, 'O');
-            _board.MakeMove(5, 'X');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(4, Constants.O);
+            _board.MakeMove(5, Constants.X);
 
             Assert.AreEqual(5, _board.TurnCount());
         }

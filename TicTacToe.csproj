@@ -35,6 +35,7 @@
     <Compile Include="Board.cs" />
     <Compile Include="ConsoleReader.cs" />
     <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="HumanPlayer.cs" />
     <Compile Include="IConsoleReader.cs" />

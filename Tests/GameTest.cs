@@ -21,8 +21,8 @@ namespace Tests
             _reader = new MockConsoleReader();
             _writer = new MockConsoleWriter();
             _board = new Board(_writer);
-            _player1 = new HumanPlayer('X', _reader, _writer);
-            _player2 = new HumanPlayer('O', _reader, _writer);
+            _player1 = new HumanPlayer(Constants.X, _reader, _writer);
+            _player2 = new HumanPlayer(Constants.O, _reader, _writer);
             _rules = new Rules();
             _game = new Game(_writer, _board, _player1, _player2, _rules);
         }
@@ -59,7 +59,7 @@ namespace Tests
         {
             _game.PlayerLoop();
             
-            var expected = new List<object>{ 'X', 2, 3, 4, 5, 6, 7, 8, 9 };
+            var expected = new List<object>{ Constants.X, 2, 3, 4, 5, 6, 7, 8, 9 };
             
             Assert.AreEqual("Player X, please make your move:", _writer.LastOutput);
             Assert.AreEqual("1", _reader.LastInput);
@@ -69,59 +69,59 @@ namespace Tests
         [Test]
         public void InvokesGameLoopUntilGameOverWhenPlayerXWins()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(4, 'O');
-            _board.MakeMove(9, 'X');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(4, Constants.O);
+            _board.MakeMove(9, Constants.X);
             var playerXWinGame = new Game(_writer, _board, _player1, _player2, _rules);
             
             playerXWinGame.GameLoop();
             
             Assert.AreEqual("Congratulations player X, you won!!", _writer.LastOutput);
-            Assert.True(_rules.IsWon(_board.Spaces(), 'X'));
-            Assert.False(_rules.IsWon(_board.Spaces(), 'O'));
+            Assert.True(_rules.IsWon(_board.Spaces(), Constants.X));
+            Assert.False(_rules.IsWon(_board.Spaces(), Constants.O));
             Assert.True(_rules.IsGameOver(_board));
         }
         
         [Test]
         public void InvokesGameLoopUntilGameOverWhenPlayerOWins()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(3, 'X');
-            _board.MakeMove(5, 'O');
-            _board.MakeMove(4, 'X');
-            _board.MakeMove(8, 'O');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(5, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
             var playerOWinGame = new Game(_writer, _board, _player1, _player2, _rules);
             
             playerOWinGame.GameLoop();
             
             Assert.AreEqual("Congratulations player O, you won!!", _writer.LastOutput);
-            Assert.True(_rules.IsWon(_board.Spaces(), 'O'));
-            Assert.False(_rules.IsWon(_board.Spaces(), 'X'));
+            Assert.True(_rules.IsWon(_board.Spaces(), Constants.O));
+            Assert.False(_rules.IsWon(_board.Spaces(), Constants.X));
             Assert.True(_rules.IsGameOver(_board));
         }
         
         [Test]
         public void InvokesGameLoopUntilGameOverWhenTieGame()
         {
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(1, 'O');
-            _board.MakeMove(3, 'X');
-            _board.MakeMove(7, 'O');
-            _board.MakeMove(4, 'X');
-            _board.MakeMove(8, 'O');
-            _board.MakeMove(9, 'X');
-            _board.MakeMove(6, 'O');
-            _board.MakeMove(2, 'X');
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(1, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(7, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
+            _board.MakeMove(9, Constants.X);
+            _board.MakeMove(6, Constants.O);
+            _board.MakeMove(2, Constants.X);
             var tieGame = new Game(_writer, _board, _player1, _player2, _rules);
             
             tieGame.GameLoop();
             
             Assert.AreEqual("Cat's game!", _writer.LastOutput);
-            Assert.False(_rules.IsWon(_board.Spaces(), 'X'));
-            Assert.False(_rules.IsWon(_board.Spaces(), 'O'));
+            Assert.False(_rules.IsWon(_board.Spaces(), Constants.X));
+            Assert.False(_rules.IsWon(_board.Spaces(), Constants.O));
             Assert.True(_rules.IsTie(_board));
             Assert.True(_rules.IsGameOver(_board));
         }

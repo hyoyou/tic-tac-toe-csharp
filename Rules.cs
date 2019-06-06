@@ -27,7 +27,7 @@ namespace TicTacToe
 
         public bool IsGameOver(Board board)
         {
-            return IsWon(board.Spaces(), 'X') | IsWon(board.Spaces(), 'O') | IsTie(board);
+            return IsWon(board.Spaces(), Constants.X) | IsWon(board.Spaces(), Constants.O) | IsTie(board);
         }
     }
 }

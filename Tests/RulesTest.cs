@@ -28,62 +28,62 @@ namespace Tests
         [Test]
         public void IsWonReturnsFalseWhenGameIsNotWon()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(3, 'X');
-            _board.MakeMove(4, 'O');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(4, Constants.O);
             
 
-            Assert.False(_rules.IsWon(_board.Spaces(), 'X'));
+            Assert.False(_rules.IsWon(_board.Spaces(), Constants.X));
         }
         
         [Test]
         public void IsWonReturnsTrueWhenGameHasVerticalWin()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(4, 'O');
-            _board.MakeMove(9, 'X');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(4, Constants.O);
+            _board.MakeMove(9, Constants.X);
             
 
-            Assert.True(_rules.IsWon(_board.Spaces(), 'X'));
+            Assert.True(_rules.IsWon(_board.Spaces(), Constants.X));
         }
         
         [Test]
         public void IsWonReturnsTrueWhenGameHasHorizontalWin()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(4, 'O');
-            _board.MakeMove(2, 'X');
-            _board.MakeMove(5, 'O');
-            _board.MakeMove(3, 'X');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(4, Constants.O);
+            _board.MakeMove(2, Constants.X);
+            _board.MakeMove(5, Constants.O);
+            _board.MakeMove(3, Constants.X);
             
 
-            Assert.True(_rules.IsWon(_board.Spaces(), 'X'));
+            Assert.True(_rules.IsWon(_board.Spaces(), Constants.X));
         }
         
         [Test]
         public void IsWonReturnsTrueWhenGameHasDiagonalWin()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(3, 'O');
-            _board.MakeMove(9, 'X');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(3, Constants.O);
+            _board.MakeMove(9, Constants.X);
             
 
-            Assert.True(_rules.IsWon(_board.Spaces(), 'X'));
+            Assert.True(_rules.IsWon(_board.Spaces(), Constants.X));
         }
         
         [Test]
         public void IsTieReturnsFalseWhenGameIsNotATie()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(3, 'O');
-            _board.MakeMove(9, 'X');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(3, Constants.O);
+            _board.MakeMove(9, Constants.X);
 
             Assert.False(_rules.IsTie(_board));
         }
@@ -91,15 +91,15 @@ namespace Tests
         [Test]
         public void IsTieReturnsTrueWhenGameIsATie()
         {
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(1, 'O');
-            _board.MakeMove(3, 'X');
-            _board.MakeMove(7, 'O');
-            _board.MakeMove(4, 'X');
-            _board.MakeMove(8, 'O');
-            _board.MakeMove(9, 'X');
-            _board.MakeMove(6, 'O');
-            _board.MakeMove(2, 'X');
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(1, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(7, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
+            _board.MakeMove(9, Constants.X);
+            _board.MakeMove(6, Constants.O);
+            _board.MakeMove(2, Constants.X);
 
             Assert.True(_rules.IsTie(_board));
         }
@@ -113,11 +113,11 @@ namespace Tests
         [Test]
         public void IsGameOverReturnsTrueWhenPlayerXWins()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(4, 'O');
-            _board.MakeMove(9, 'X');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(4, Constants.O);
+            _board.MakeMove(9, Constants.X);
 
             Assert.True(_rules.IsGameOver(_board));
         }
@@ -125,12 +125,12 @@ namespace Tests
         [Test]
         public void IsGameOverReturnsTrueWhenPlayerOWins()
         {
-            _board.MakeMove(1, 'X');
-            _board.MakeMove(2, 'O');
-            _board.MakeMove(3, 'X');
-            _board.MakeMove(5, 'O');
-            _board.MakeMove(4, 'X');
-            _board.MakeMove(8, 'O');
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(5, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
 
             Assert.True(_rules.IsGameOver(_board));
         }
@@ -138,15 +138,15 @@ namespace Tests
         [Test]
         public void IsGameOverReturnsTrueWhenThereIsATie()
         {
-            _board.MakeMove(5, 'X');
-            _board.MakeMove(1, 'O');
-            _board.MakeMove(3, 'X');
-            _board.MakeMove(7, 'O');
-            _board.MakeMove(4, 'X');
-            _board.MakeMove(8, 'O');
-            _board.MakeMove(9, 'X');
-            _board.MakeMove(6, 'O');
-            _board.MakeMove(2, 'X');
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(1, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(7, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
+            _board.MakeMove(9, Constants.X);
+            _board.MakeMove(6, Constants.O);
+            _board.MakeMove(2, Constants.X);
 
             Assert.True(_rules.IsGameOver(_board));
         }
