@@ -71,8 +71,9 @@ namespace Tests
             Assert.False(_board.IsValidMove(5));
             Assert.False(_board.IsValidMove(1));
             Assert.True(_board.IsValidMove(3));
+            Assert.False(_board.IsValidMove(-1));
         }
-        
+
         [Test]
         public void Returns9AvailableMovesWhenThereAreNoMovesMade()
         {

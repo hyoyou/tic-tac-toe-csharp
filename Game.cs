@@ -1,3 +1,5 @@
+using System;
+
 namespace TicTacToe
 {
     public class Game
@@ -28,18 +30,33 @@ namespace TicTacToe
             var currentPlayer = CurrentPlayer();
             var userInput = currentPlayer.Move();
             var moveInt = ConvertToInt(userInput);
-            while (!_board.IsValidMove(moveInt))
+            TryMove(moveInt, currentPlayer);
+        }
+
+        private int ConvertToInt(string userInput)
+        {
+            int i;
+            
+            if (!int.TryParse(userInput, out i))
+            {
+                i = -1;
+            }
+
+            return i;
+        }
+        
+        private void TryMove(int moveInt, HumanPlayer currentPlayer)
+        {
+            if (_board.IsValidMove(moveInt))
+            {
+                _board.MakeMove(moveInt, currentPlayer.Symbol());
+            }
+            else
             {
                 _writer.PromptUser();
                 _writer.PrintBoard(_board.Spaces());
                 PlayerLoop();
             }
-            _board.MakeMove(moveInt, currentPlayer.Symbol());
-        }
-
-        private int ConvertToInt(string userInput)
-        {
-            return int.Parse(userInput);
         }
 
         public void GameLoop()

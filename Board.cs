@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TicTacToe
 {
@@ -25,9 +26,14 @@ namespace TicTacToe
 
         public bool IsValidMove(int cell)
         {
-            var validMoves = AvailableMoves();
-            var playerMove = _boardList[cell - 1];
-            return validMoves.Contains(playerMove);
+            if (Enumerable.Range(1, 9).Contains(cell))
+            {
+                var validMoves = AvailableMoves();
+                var playerMove = _boardList[cell - 1];
+                return validMoves.Contains(playerMove);
+            }
+
+            return false;
         }
 
         public List<object> Spaces()
