@@ -6,11 +6,11 @@ namespace TicTacToe
         private static IConsoleReader _reader;
         private static IConsoleWriter _writer;
 
-        public HumanPlayer(char playerSymbol, IConsoleReader IReader, IConsoleWriter IWriter)
+        public HumanPlayer(char playerSymbol, IConsoleReader reader, IConsoleWriter writer)
         {
             _symbol = playerSymbol;
-            _reader = IReader;
-            _writer = IWriter;
+            _reader = reader;
+            _writer = writer;
         }
 
         public char Symbol()

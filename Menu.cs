@@ -4,9 +4,9 @@ namespace TicTacToe
     {
         private static IConsoleWriter _writer;
 
-        public Menu(IConsoleWriter IWriter)
+        public Menu(IConsoleWriter writer)
         {
-            _writer = IWriter;
+            _writer = writer;
         }
         
         public void Welcome()

@@ -59,7 +59,7 @@ namespace Tests
         {
             _game.PlayerLoop();
             
-            List<object> expected = new List<object>{ 'X', 2, 3, 4, 5, 6, 7, 8, 9 };
+            var expected = new List<object>{ 'X', 2, 3, 4, 5, 6, 7, 8, 9 };
             
             Assert.AreEqual("Player X, please make your move:", _writer.LastOutput);
             Assert.AreEqual("1", _reader.LastInput);
@@ -74,7 +74,7 @@ namespace Tests
             _board.MakeMove(5, 'X');
             _board.MakeMove(4, 'O');
             _board.MakeMove(9, 'X');
-            Game playerXWinGame = new Game(_writer, _board, _player1, _player2, _rules);
+            var playerXWinGame = new Game(_writer, _board, _player1, _player2, _rules);
             
             playerXWinGame.GameLoop();
             
@@ -93,7 +93,7 @@ namespace Tests
             _board.MakeMove(5, 'O');
             _board.MakeMove(4, 'X');
             _board.MakeMove(8, 'O');
-            Game playerOWinGame = new Game(_writer, _board, _player1, _player2, _rules);
+            var playerOWinGame = new Game(_writer, _board, _player1, _player2, _rules);
             
             playerOWinGame.GameLoop();
             
@@ -115,7 +115,7 @@ namespace Tests
             _board.MakeMove(9, 'X');
             _board.MakeMove(6, 'O');
             _board.MakeMove(2, 'X');
-            Game tieGame = new Game(_writer, _board, _player1, _player2, _rules);
+            var tieGame = new Game(_writer, _board, _player1, _player2, _rules);
             
             tieGame.GameLoop();
             

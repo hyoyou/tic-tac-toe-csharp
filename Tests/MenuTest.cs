@@ -9,8 +9,8 @@ namespace Tests
         [Test]
         public void DisplaysWelcomeMessage()
         {
-            MockConsoleWriter writer = new MockConsoleWriter();
-            Menu menu = new Menu(writer);
+            var writer = new MockConsoleWriter();
+            var menu = new Menu(writer);
             
             menu.Welcome();
             

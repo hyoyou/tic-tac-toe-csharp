@@ -36,7 +36,7 @@ namespace Tests
         [Test]
         public void ReturnsAnEmptyBoardAsAnArray()
         {
-            List<object> expected = new List<object>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var expected = new List<object>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, _board.Spaces());
         }
@@ -47,7 +47,7 @@ namespace Tests
             _board.MakeMove(5, 'X');
             _board.MakeMove(1, 'O');
             
-            List<object> expected = new List<object>{ 'O', 2, 3, 4, 'X', 6, 7, 8, 9 };
+            var expected = new List<object>{ 'O', 2, 3, 4, 'X', 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, _board.Spaces());
         }
@@ -57,7 +57,7 @@ namespace Tests
         {
             _board.MakeMove(5, 'X');
             
-            List<object> expected = new List<object>{ 1, 2, 3, 4, 'X', 6, 7, 8, 9 };
+            var expected = new List<object>{ 1, 2, 3, 4, 'X', 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, _board.Spaces());
         }
@@ -76,7 +76,7 @@ namespace Tests
         [Test]
         public void Returns9AvailableMovesWhenThereAreNoMovesMade()
         {
-            List<object> expected = new List<object>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var expected = new List<object>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, _board.AvailableMoves());
         }
@@ -89,7 +89,7 @@ namespace Tests
             _board.MakeMove(3, 'X');
             _board.MakeMove(4, 'O');
             
-            List<object> expected = new List<object>{ 5, 6, 7, 8, 9 };
+            var expected = new List<object>{ 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(expected, _board.AvailableMoves());
         }
