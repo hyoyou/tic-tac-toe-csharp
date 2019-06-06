@@ -18,22 +18,23 @@ namespace TicTacToe
             _writer.PrintBoard(BoardList);
         }
 
-        public List<object> MakeMove(int cell, char playerSymbol)
+        public void MakeMove(int cell, char playerSymbol)
         {
             BoardList[cell - 1] = playerSymbol;
-            return BoardList;
         }
-        
+
+        public bool IsValidMove(int cell)
+        {
+            var validMoves = AvailableMoves();
+            var playerMove = BoardList[cell - 1];
+            return validMoves.Contains(playerMove);
+        }
+
         public List<object> Spaces()
         {
             return BoardList;
         }
         
-        public object Space(int cell)
-        {
-            return BoardList[cell - 1];
-        }
-
         public List<object> AvailableMoves()
         {
             List<object> AvailableList = new List<object>();

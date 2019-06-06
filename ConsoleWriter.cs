@@ -15,14 +15,29 @@ namespace TicTacToe
         {
             Console.WriteLine(" {0} | {1} | {2} ", boardList[0], boardList[1], boardList[2]);
             Console.WriteLine(" ===+===+===");
-            Console.WriteLine(" {3} | {4} | {5} ", boardList[3], boardList[4], boardList[5]);
+            Console.WriteLine(" {0} | {1} | {2} ", boardList[3], boardList[4], boardList[5]);
             Console.WriteLine(" ===+===+===");
-            Console.WriteLine(" {6} | {7} | {8} ", boardList[6], boardList[7], boardList[8]);
+            Console.WriteLine(" {0} | {1} | {2} ", boardList[6], boardList[7], boardList[8]);
         }
 
         public void AskForMove(char playerSymbol)
         {
             Console.WriteLine($"Player {playerSymbol}, please make your move:");
+        }
+
+        public void PromptUser()
+        {
+            Console.WriteLine("Invalid move, please enter a different move:");
+        }
+
+        public void PrintCongratulations(char playerSymbol)
+        {
+            Console.WriteLine($"Congratulations player {playerSymbol}, you won!!");
+        }
+
+        public void PrintTieGame()
+        {
+            Console.WriteLine("Cat's game!");
         }
     }
 }

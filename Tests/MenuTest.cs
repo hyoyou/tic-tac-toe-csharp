@@ -13,6 +13,7 @@ namespace Tests
             Menu menu = new Menu(writer);
             
             menu.Welcome();
+            
             Assert.AreEqual("Welcome to Tic Tac Toe!", writer.LastOutput );
         }
     }

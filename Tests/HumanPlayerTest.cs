@@ -36,6 +36,7 @@ namespace Tests
         public void GameAsksCorrectPlayerXToInputTheirMove()
         {
             _player1.Move();
+            
             Assert.AreEqual("Player X, please make your move:", _writer.LastOutput);
         }
         
@@ -43,6 +44,7 @@ namespace Tests
         public void GameAsksCorrectPlayerOToInputTheirMove()
         {
             _player2.Move();
+            
             Assert.AreEqual("Player O, please make your move:", _writer.LastOutput);
         }
         
@@ -51,6 +53,7 @@ namespace Tests
         {
             _reader.SetInput("2");
             _player1.Move();
+            
             Assert.AreEqual("2", _reader.GetInput());
         }
     }

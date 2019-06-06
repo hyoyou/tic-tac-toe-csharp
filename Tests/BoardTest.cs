@@ -36,59 +36,49 @@ namespace Tests
         [Test]
         public void ReturnsAnEmptyBoardAsAnArray()
         {
-            var actual = _board.Spaces();
             List<object> expected = new List<object>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, _board.Spaces());
         }
 
-        [Test]
-        public void ReturnsAnArrayWithAMove()
-        {
-            _board.MakeMove(5, 'X');
-            var actual = _board.Spaces();
-            List<object> expected = new List<object>{ 1, 2, 3, 4, 'X', 6, 7, 8, 9 };
-
-            Assert.AreEqual(expected, actual);
-        }
-        
         [Test]
         public void ReturnsAnArrayWithMoves()
         {
             _board.MakeMove(5, 'X');
             _board.MakeMove(1, 'O');
-            var actual = _board.Spaces();
+            
             List<object> expected = new List<object>{ 'O', 2, 3, 4, 'X', 6, 7, 8, 9 };
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, _board.Spaces());
         }
         
         [Test]
-        public void ReturnsContentOfCellThatIsEmpty()
-        {
-            var actual = _board.Space(5);
-            int expected = 5;
-
-            Assert.AreEqual(expected, actual);
-        }
-        
-        [Test]
-        public void ReturnsContentOfCellWithMove()
+        public void MakesPlayerMoveOnBoard()
         {
             _board.MakeMove(5, 'X');
-            var actual = _board.Space(5);
-            char expected = 'X';
+            
+            List<object> expected = new List<object>{ 1, 2, 3, 4, 'X', 6, 7, 8, 9 };
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, _board.Spaces());
+        }
+        
+        [Test]
+        public void ReturnsValidityOfPlayersMove()
+        {
+            _board.MakeMove(5, 'X');
+            _board.MakeMove(1, 'O');
+            
+            Assert.False(_board.IsValidMove(5));
+            Assert.False(_board.IsValidMove(1));
+            Assert.True(_board.IsValidMove(3));
         }
         
         [Test]
         public void Returns9AvailableMovesWhenThereAreNoMovesMade()
         {
-            var actual = _board.AvailableMoves();
             List<object> expected = new List<object>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, _board.AvailableMoves());
         }
         
         [Test]
@@ -98,29 +88,24 @@ namespace Tests
             _board.MakeMove(2, 'O');
             _board.MakeMove(3, 'X');
             _board.MakeMove(4, 'O');
-            var actual = _board.AvailableMoves();
+            
             List<object> expected = new List<object>{ 5, 6, 7, 8, 9 };
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, _board.AvailableMoves());
         }
         
         [Test]
         public void ReturnsTurnCount0WhenThereAreNoMoves()
         {
-            var actual = _board.TurnCount();
-            int expected = 0;
-
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(0, _board.TurnCount());
         }
         
         [Test]
         public void ReturnsTurnCount1WhenThereIs1Move()
         {
             _board.MakeMove(5, 'X');
-            var actual = _board.TurnCount();
-            int expected = 1;
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(1, _board.TurnCount());
         }
         
         [Test]
@@ -131,10 +116,8 @@ namespace Tests
             _board.MakeMove(3, 'X');
             _board.MakeMove(4, 'O');
             _board.MakeMove(5, 'X');
-            var actual = _board.TurnCount();
-            int expected = 5;
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(5, _board.TurnCount());
         }
     }
 }

@@ -35,6 +35,7 @@
     <Compile Include="Board.cs" />
     <Compile Include="ConsoleReader.cs" />
     <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="HumanPlayer.cs" />
     <Compile Include="IConsoleReader.cs" />
     <Compile Include="IConsoleWriter.cs" />
@@ -42,6 +43,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules.cs" />
+    <Compile Include="StartGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.md" />

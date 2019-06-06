@@ -4,7 +4,7 @@ namespace TicTacToe
 {
     public class Rules
     {
-        public static bool? IsWon(List<object> board, char playerSymbol)
+        public bool IsWon(List<object> board, char playerSymbol)
         {
             if (board[0].Equals(playerSymbol) && board[1].Equals(playerSymbol) && board[2].Equals(playerSymbol)) { return true; }
             if (board[3].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[5].Equals(playerSymbol)) { return true; }
@@ -20,12 +20,12 @@ namespace TicTacToe
             return false;
         }
         
-        public static bool? IsTie(Board board) 
+        public bool IsTie(Board board) 
         {
             return board.AvailableMoves().Count == 0; 
         }
 
-        public static bool? IsGameOver(Board board)
+        public bool IsGameOver(Board board)
         {
             return IsWon(board.Spaces(), 'X') | IsWon(board.Spaces(), 'O') | IsTie(board);
         }

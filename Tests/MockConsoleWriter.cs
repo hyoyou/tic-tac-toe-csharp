@@ -30,5 +30,20 @@ namespace Tests
         {
             LastOutput = $"Player {playerSymbol}, please make your move:";
         }
+
+        public void PromptUser()
+        {
+            LastOutput = "Invalid move, please enter a different move:";
+        }
+
+        public void PrintCongratulations(char playerSymbol)
+        {
+            LastOutput = $"Congratulations player {playerSymbol}, you won!!";
+        }
+
+        public void PrintTieGame()
+        {
+            LastOutput = "Cat's game!";
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace Tests
             _board.MakeMove(4, 'O');
             
 
-            Assert.False(Rules.IsWon(_board.Spaces(), 'X'));
+            Assert.False(_rules.IsWon(_board.Spaces(), 'X'));
         }
         
         [Test]
@@ -47,7 +47,7 @@ namespace Tests
             _board.MakeMove(9, 'X');
             
 
-            Assert.True(Rules.IsWon(_board.Spaces(), 'X'));
+            Assert.True(_rules.IsWon(_board.Spaces(), 'X'));
         }
         
         [Test]
@@ -60,7 +60,7 @@ namespace Tests
             _board.MakeMove(3, 'X');
             
 
-            Assert.True(Rules.IsWon(_board.Spaces(), 'X'));
+            Assert.True(_rules.IsWon(_board.Spaces(), 'X'));
         }
         
         [Test]
@@ -73,7 +73,7 @@ namespace Tests
             _board.MakeMove(9, 'X');
             
 
-            Assert.True(Rules.IsWon(_board.Spaces(), 'X'));
+            Assert.True(_rules.IsWon(_board.Spaces(), 'X'));
         }
         
         [Test]
@@ -85,7 +85,7 @@ namespace Tests
             _board.MakeMove(3, 'O');
             _board.MakeMove(9, 'X');
 
-            Assert.False(Rules.IsTie(_board));
+            Assert.False(_rules.IsTie(_board));
         }
         
         [Test]
@@ -101,13 +101,13 @@ namespace Tests
             _board.MakeMove(6, 'O');
             _board.MakeMove(2, 'X');
 
-            Assert.True(Rules.IsTie(_board));
+            Assert.True(_rules.IsTie(_board));
         }
         
         [Test]
         public void IsGameOverReturnsFalseWhenGameStarts()
         {
-            Assert.False(Rules.IsGameOver(_board));
+            Assert.False(_rules.IsGameOver(_board));
         }
         
         [Test]
@@ -119,7 +119,7 @@ namespace Tests
             _board.MakeMove(4, 'O');
             _board.MakeMove(9, 'X');
 
-            Assert.True(Rules.IsGameOver(_board));
+            Assert.True(_rules.IsGameOver(_board));
         }
         
         [Test]
@@ -132,7 +132,7 @@ namespace Tests
             _board.MakeMove(4, 'X');
             _board.MakeMove(8, 'O');
 
-            Assert.True(Rules.IsGameOver(_board));
+            Assert.True(_rules.IsGameOver(_board));
         }
         
         [Test]
@@ -148,7 +148,7 @@ namespace Tests
             _board.MakeMove(6, 'O');
             _board.MakeMove(2, 'X');
 
-            Assert.True(Rules.IsGameOver(_board));
+            Assert.True(_rules.IsGameOver(_board));
         }
     }
 }

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoardTest.cs" />
+    <Compile Include="GameTest.cs" />
     <Compile Include="HumanPlayerTest.cs" />
     <Compile Include="MockConsoleReader.cs" />
     <Compile Include="MockConsoleWriter.cs" />
