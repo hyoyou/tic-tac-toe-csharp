@@ -6,18 +6,55 @@ namespace TicTacToe
     {
         public bool IsWon(List<object> board, char playerSymbol)
         {
-            if (board[0].Equals(playerSymbol) && board[1].Equals(playerSymbol) && board[2].Equals(playerSymbol)) { return true; }
-            if (board[3].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[5].Equals(playerSymbol)) { return true; }
-            if (board[6].Equals(playerSymbol) && board[7].Equals(playerSymbol) && board[8].Equals(playerSymbol)) { return true; }
-
-            if (board[0].Equals(playerSymbol) && board[3].Equals(playerSymbol) && board[6].Equals(playerSymbol)) { return true; }
-            if (board[1].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[7].Equals(playerSymbol)) { return true; }
-            if (board[2].Equals(playerSymbol) && board[5].Equals(playerSymbol) && board[8].Equals(playerSymbol)) { return true; }
-
-            if (board[0].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[8].Equals(playerSymbol)) { return true; }
-            if (board[2].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[6].Equals(playerSymbol)) { return true; }
-
+            if (IsHorizontalWin(board, playerSymbol)) return true;
+            if (IsVerticalWin(board, playerSymbol)) return true;
+            if (IsLeftDiagonalWin(board, playerSymbol)) return true;
+            if (IsRightDiagonalWin(board, playerSymbol)) return true;
             return false;
+        }
+
+        private bool IsHorizontalWin(List<object> board, char playerSymbol)
+        {
+            for (var i = 0; i < 3; i++)
+            {
+                var tempArr = new List<object>();
+                
+                for (var j = 0; j < 3; j++)
+                {
+                    tempArr.Add(board[3*j+i]);
+                }
+
+                if (tempArr[0].Equals(playerSymbol) && tempArr[1].Equals(playerSymbol) &&
+                    tempArr[2].Equals(playerSymbol)) return true;
+            }
+            return false;
+        }
+        
+        private bool IsVerticalWin(List<object> board, char playerSymbol)
+        {
+            for (var i = 0; i < 3; i++)
+            {
+                var tempArr = new List<object>();
+                
+                for (var j = 0; j < 3; j++)
+                {
+                    tempArr.Add(board[3*i+j]);
+                }
+
+                if (tempArr[0].Equals(playerSymbol) && tempArr[1].Equals(playerSymbol) &&
+                    tempArr[2].Equals(playerSymbol)) return true;
+            }
+            return false;
+        }
+        
+        private bool IsLeftDiagonalWin(List<object> board, char playerSymbol)
+        {
+            return board[0].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[8].Equals(playerSymbol);
+        }
+        
+        private bool IsRightDiagonalWin(List<object> board, char playerSymbol)
+        {
+            return board[2].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[6].Equals(playerSymbol);
         }
         
         public bool IsTie(Board board) 
