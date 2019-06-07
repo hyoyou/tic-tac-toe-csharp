@@ -8,10 +8,10 @@ namespace TicTacToe
         private static IConsoleWriter _writer;
         private static List<object> _boardList;
 
-        public Board(IConsoleWriter IWriter)
+        public Board(IConsoleWriter writer)
         {
-            _boardList = new List<object>(){ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            _writer = IWriter;
+            _boardList = new List<object> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            _writer = writer;
         }
         
         public void DisplayBoard()
@@ -26,7 +26,7 @@ namespace TicTacToe
 
         public bool IsValidMove(int cell)
         {
-            if (Enumerable.Range(1, 9).Contains(cell))
+            if (Enumerable.Range(1, 3 * 3).Contains(cell))
             {
                 var validMoves = AvailableMoves();
                 var playerMove = _boardList[cell - 1];

@@ -19,11 +19,18 @@ namespace Tests
         
         public void PrintBoard(List<object> boardList)
         {
-            LastOutput += $" {boardList[0]} | {boardList[1]} | {boardList[2]} ";
-            LastOutput += " ===+===+=== ";
-            LastOutput += $" {boardList[3]} | {boardList[4]} | {boardList[5]} ";
-            LastOutput += " ===+===+=== ";
-            LastOutput += $" {boardList[6]} | {boardList[7]} | {boardList[8]} ";
+            for (var i = 0; i < 3 * 3; i += 3)
+            {
+                if (i == 0) LastOutput += $"----+---+----";
+
+                for (var j = i; j < i + 3; j++)
+                {
+                    if (j == i) LastOutput += "|";
+                    LastOutput += $" {boardList[j]} |";
+                }
+                
+                LastOutput += "----+---+----";
+            }
         }
 
         public void AskForMove(char playerSymbol)
