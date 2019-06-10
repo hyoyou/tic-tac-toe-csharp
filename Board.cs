@@ -10,13 +10,41 @@ namespace TicTacToe
 
         public Board(IConsoleWriter writer)
         {
-            _boardList = new List<object> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            _boardList = CreateGridList(Constants.GridDimension * Constants.GridDimension);
             _writer = writer;
+        }
+
+        private static List<object> CreateGridList(int count)
+        {
+            var gridList = new List<object>(count);
+            gridList.AddRange(Enumerable.Repeat(Constants.Empty, count));
+            return gridList;
         }
         
         public void DisplayBoard()
         {
-            _writer.PrintBoard(_boardList);
+            var populatedBoard = PopulateBoard(_boardList);
+            _writer.PrintBoard(populatedBoard);
+        }
+
+        private List<object> PopulateBoard(List<object> boardList)
+        {
+            var boardListWithCell = new List<object>();
+            boardListWithCell.AddRange(Enumerable.Repeat(Constants.Empty, Constants.GridDimension * Constants.GridDimension));
+
+            for (var i = 0; i < boardList.Count; i++)
+            {
+                if (boardList[i].Equals(" "))
+                {
+                    boardListWithCell[i] = i + 1;
+                }
+                else
+                {
+                    boardListWithCell[i] = boardList[i];
+                }
+            }
+
+            return boardListWithCell;
         }
 
         public void MakeMove(int cell, char playerSymbol)
@@ -26,10 +54,10 @@ namespace TicTacToe
 
         public bool IsValidMove(int cell)
         {
-            if (Enumerable.Range(1, 3 * 3).Contains(cell))
+            if (Enumerable.Range(1, Constants.GridDimension * Constants.GridDimension).Contains(cell))
             {
                 var validMoves = AvailableMoves();
-                var playerMove = _boardList[cell - 1];
+                var playerMove = Spaces()[cell - 1];
                 return validMoves.Contains(playerMove);
             }
 
@@ -38,18 +66,18 @@ namespace TicTacToe
 
         public List<object> Spaces()
         {
-            return _boardList;
+            return PopulateBoard(_boardList);
         }
         
         public List<object> AvailableMoves()
         {
             var availableList = new List<object>();
 
-            foreach (object cell in _boardList)
+            for (var i = 0; i < _boardList.Count; i++)
             {
-                if (cell is int)
+                if (_boardList[i].Equals(Constants.Empty))
                 {
-                    availableList.Add(cell);
+                    availableList.Add(i + 1);
                 }
             }
 
@@ -58,7 +86,7 @@ namespace TicTacToe
 
         public int TurnCount()
         {
-            return 9 - AvailableMoves().Count;
+            return Constants.GridDimension * Constants.GridDimension - AvailableMoves().Count;
         }
     }
 }

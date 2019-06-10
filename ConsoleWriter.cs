@@ -13,11 +13,11 @@ namespace TicTacToe
         
         public void PrintBoard(List<object> boardList)
         {
-            for (var i = 0; i < 3 * 3; i += 3)
+            for (var i = 0; i < Constants.GridDimension * Constants.GridDimension; i += Constants.GridDimension)
             {
                 if (i == 0) Console.WriteLine("----+---+----");
                 
-                for (var j = i; j < i + 3; j++)
+                for (var j = i; j < i + Constants.GridDimension; j++)
                 {
                     if (j == i) Console.Write("|");
                     Console.Write($" {boardList[j]} |");

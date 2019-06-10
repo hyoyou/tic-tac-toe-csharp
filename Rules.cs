@@ -15,13 +15,13 @@ namespace TicTacToe
 
         private bool IsHorizontalWin(List<object> board, char playerSymbol)
         {
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < Constants.GridDimension; i++)
             {
                 var tempArr = new List<object>();
                 
-                for (var j = 0; j < 3; j++)
+                for (var j = 0; j < Constants.GridDimension; j++)
                 {
-                    tempArr.Add(board[3*j+i]);
+                    tempArr.Add(board[Constants.GridDimension * j + i]);
                 }
 
                 if (tempArr[0].Equals(playerSymbol) && tempArr[1].Equals(playerSymbol) &&
@@ -32,13 +32,13 @@ namespace TicTacToe
         
         private bool IsVerticalWin(List<object> board, char playerSymbol)
         {
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < Constants.GridDimension; i++)
             {
                 var tempArr = new List<object>();
                 
-                for (var j = 0; j < 3; j++)
+                for (var j = 0; j < Constants.GridDimension; j++)
                 {
-                    tempArr.Add(board[3*i+j]);
+                    tempArr.Add(board[Constants.GridDimension * i + j]);
                 }
 
                 if (tempArr[0].Equals(playerSymbol) && tempArr[1].Equals(playerSymbol) &&
