@@ -9,52 +9,57 @@ namespace TicTacToe
             if (IsHorizontalWin(board, playerSymbol)) return true;
             if (IsVerticalWin(board, playerSymbol)) return true;
             if (IsLeftDiagonalWin(board, playerSymbol)) return true;
-            if (IsRightDiagonalWin(board, playerSymbol)) return true;
-            return false;
+            return IsRightDiagonalWin(board, playerSymbol);
         }
 
         private bool IsHorizontalWin(List<object> board, char playerSymbol)
         {
             for (var i = 0; i < Constants.GridDimension; i++)
             {
-                var tempArr = new List<object>();
+                var tempList = new List<object>();
                 
                 for (var j = 0; j < Constants.GridDimension; j++)
                 {
-                    tempArr.Add(board[Constants.GridDimension * j + i]);
+                    tempList.Add(board[Constants.GridDimension * j + i]);
                 }
 
-                if (tempArr[0].Equals(playerSymbol) && tempArr[1].Equals(playerSymbol) &&
-                    tempArr[2].Equals(playerSymbol)) return true;
+                if (IsMatch(playerSymbol, tempList)) return true;
             }
             return false;
         }
-        
+
         private bool IsVerticalWin(List<object> board, char playerSymbol)
         {
             for (var i = 0; i < Constants.GridDimension; i++)
             {
-                var tempArr = new List<object>();
+                var tempList = new List<object>();
                 
                 for (var j = 0; j < Constants.GridDimension; j++)
                 {
-                    tempArr.Add(board[Constants.GridDimension * i + j]);
+                    tempList.Add(board[Constants.GridDimension * i + j]);
                 }
 
-                if (tempArr[0].Equals(playerSymbol) && tempArr[1].Equals(playerSymbol) &&
-                    tempArr[2].Equals(playerSymbol)) return true;
+                if (IsMatch(playerSymbol, tempList)) return true;
             }
             return false;
         }
-        
+
         private bool IsLeftDiagonalWin(List<object> board, char playerSymbol)
         {
-            return board[0].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[8].Equals(playerSymbol);
+            var tempList = new List<object> { board[0], board[4], board[8] };
+            return IsMatch(playerSymbol, tempList);
         }
         
         private bool IsRightDiagonalWin(List<object> board, char playerSymbol)
         {
-            return board[2].Equals(playerSymbol) && board[4].Equals(playerSymbol) && board[6].Equals(playerSymbol);
+            var tempList = new List<object> { board[2], board[4], board[6] };
+            return IsMatch(playerSymbol, tempList);
+        }
+        
+        private static bool IsMatch(char playerSymbol, List<object> tempList)
+        {
+            return tempList[0].Equals(playerSymbol) && tempList[1].Equals(playerSymbol) &&
+                   tempList[2].Equals(playerSymbol);
         }
         
         public bool IsTie(Board board) 
