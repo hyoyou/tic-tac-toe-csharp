@@ -10,7 +10,12 @@ namespace TicTacToe
         {
             Console.WriteLine(s);
         }
-        
+
+        public void Welcome()
+        {
+            Console.WriteLine("Welcome to Tic Tac Toe!");
+        }
+
         public void PrintBoard(List<object> boardList)
         {
             for (var i = 0; i < Constants.GridDimension * Constants.GridDimension; i += Constants.GridDimension)

@@ -16,7 +16,12 @@ namespace Tests
         {
             LastOutput += s;
         }
-        
+
+        public void Welcome()
+        {
+            LastOutput += "Welcome to Tic Tac Toe!";
+        }
+
         public void PrintBoard(List<object> boardList)
         {
             for (var i = 0; i < Constants.GridDimension * Constants.GridDimension; i += Constants.GridDimension)
