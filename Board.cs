@@ -30,17 +30,16 @@ namespace TicTacToe
         private List<object> PopulateBoard(List<object> boardList)
         {
             var boardListWithCell = new List<object>();
-            boardListWithCell.AddRange(Enumerable.Repeat(Constants.Empty, Constants.GridDimension * Constants.GridDimension));
 
             for (var i = 0; i < boardList.Count; i++)
             {
                 if (boardList[i].Equals(" "))
                 {
-                    boardListWithCell[i] = i + 1;
+                    boardListWithCell.Add(i + 1);
                 }
                 else
                 {
-                    boardListWithCell[i] = boardList[i];
+                    boardListWithCell.Add(boardList[i]);
                 }
             }
 
