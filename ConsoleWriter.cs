@@ -26,11 +26,10 @@ namespace TicTacToe
 
         public void SetLanguage(string langChoice)
         {
-            if (!langChoice.Equals("es") | !langChoice.Equals("ko"))
+            if (langChoice.Equals(Constants.Spanish) | langChoice.Equals(Constants.Korean))
             {
-                langChoice = "en";
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(langChoice);
             }
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(langChoice);
         }
 
         public void GridOption()
