@@ -69,7 +69,7 @@ namespace Tests
         [Test]
         public void PlayerLoopAsksForPlayersMoveInSpanish()
         {
-            _writer.SetLanguage("es");
+            _writer.SetLanguage(Constants.Spanish);
             _game.PlayerLoop();
 
             Assert.AreEqual("Jugador X, por favor haz tu movimiento:", _writer.LastOutput);
@@ -78,7 +78,7 @@ namespace Tests
         [Test]
         public void PlayerLoopAsksForPlayersMoveInKorean()
         {
-            _writer.SetLanguage("ko");
+            _writer.SetLanguage(Constants.Korean);
             _game.PlayerLoop();
 
             Assert.AreEqual("플레이어 X, 원하시는 칸을 선택해주세요:", _writer.LastOutput);
@@ -105,7 +105,7 @@ namespace Tests
         [Test]
         public void CongratulatesPlayerXWinInSpanish()
         {
-            _writer.SetLanguage("es");
+            _writer.SetLanguage(Constants.Spanish);
             _board.MakeMove(1, Constants.X);
             _board.MakeMove(2, Constants.O);
             _board.MakeMove(5, Constants.X);
@@ -121,7 +121,7 @@ namespace Tests
         [Test]
         public void CongratulatesPlayerXWinInKorean()
         {
-            _writer.SetLanguage("ko");
+            _writer.SetLanguage(Constants.Korean);
             _board.MakeMove(1, Constants.X);
             _board.MakeMove(2, Constants.O);
             _board.MakeMove(5, Constants.X);
@@ -156,7 +156,7 @@ namespace Tests
         [Test]
         public void CongratulatesPlayerOWinInSpanish()
         {
-            _writer.SetLanguage("es");
+            _writer.SetLanguage(Constants.Spanish);
             _board.MakeMove(1, Constants.X);
             _board.MakeMove(2, Constants.O);
             _board.MakeMove(3, Constants.X);
@@ -173,7 +173,7 @@ namespace Tests
         [Test]
         public void CongratulatesPlayerOWinInKorean()
         {
-            _writer.SetLanguage("ko");
+            _writer.SetLanguage(Constants.Korean);
             _board.MakeMove(1, Constants.X);
             _board.MakeMove(2, Constants.O);
             _board.MakeMove(3, Constants.X);
@@ -213,7 +213,7 @@ namespace Tests
         [Test]
         public void DisplaysTieGameMessageInSpanish()
         {
-            _writer.SetLanguage("es");
+            _writer.SetLanguage(Constants.Spanish);
             _board.MakeMove(5, Constants.X);
             _board.MakeMove(1, Constants.O);
             _board.MakeMove(3, Constants.X);
@@ -233,7 +233,7 @@ namespace Tests
         [Test]
         public void DisplaysTieGameMessageInKorean()
         {
-            _writer.SetLanguage("ko");
+            _writer.SetLanguage(Constants.Korean);
             _board.MakeMove(5, Constants.X);
             _board.MakeMove(1, Constants.O);
             _board.MakeMove(3, Constants.X);
