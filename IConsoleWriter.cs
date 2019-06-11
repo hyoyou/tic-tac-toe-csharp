@@ -3,7 +3,6 @@ namespace TicTacToe
 {
     public interface IConsoleWriter
     {
-        void WriteLine(string s);
         void Welcome();
         void LanguageOption();
         void SetLanguage(string langChoice);

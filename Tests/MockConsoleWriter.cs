@@ -11,12 +11,7 @@ namespace Tests
         
         public MockConsoleWriter()
         {
-            LastOutput = "";
-        }
-
-        public void WriteLine(string s)
-        {
-            LastOutput += s;
+            LastOutput = Constants.Empty;
         }
 
         public void Welcome()
@@ -31,7 +26,10 @@ namespace Tests
 
         public void SetLanguage(string langChoice)
         {
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(langChoice);
+            if (langChoice.Equals(Constants.Spanish) | langChoice.Equals(Constants.Korean))
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(langChoice);
+            }
         }
 
         public void GridOption()

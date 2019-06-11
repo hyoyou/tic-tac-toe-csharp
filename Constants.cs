@@ -10,5 +10,8 @@ namespace TicTacToe
         public const string BoardOutlineEnd = "----";
         public const string CellSeparator = "|";
         public const string Newline = "\n";
+
+        public const string Spanish = "es";
+        public const string Korean = "ko";
     }
 }
