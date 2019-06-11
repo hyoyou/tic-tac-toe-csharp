@@ -20,10 +20,10 @@ namespace Tests
         {
             _reader = new MockConsoleReader();
             _writer = new MockConsoleWriter();
-            _board = new Board(_writer);
+            _board = new Board(_writer, 3);
             _player1 = new HumanPlayer(Constants.X, _reader, _writer);
             _player2 = new HumanPlayer(Constants.O, _reader, _writer);
-            _rules = new Rules();
+            _rules = new Rules(3);
             _game = new Game(_writer, _board, _player1, _player2, _rules);
         }
         

@@ -5,6 +5,8 @@ namespace TicTacToe
         public const char X = 'X'; 
         public const char O = 'O';
         public const string Empty = " ";
-        public const int GridDimension = 3;
+
+        public const string BoardOutline = "----+";
+        public const string BoardOutlineEnd = "----";
     }
 }

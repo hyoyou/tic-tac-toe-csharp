@@ -1,5 +1,3 @@
-using System;
-
 namespace TicTacToe
 {
     public class Game
@@ -32,7 +30,6 @@ namespace TicTacToe
             var moveInt = ConvertToInt(userInput);
             TryMove(moveInt, currentPlayer);
         }
-
         private int ConvertToInt(string userInput)
         {
             int i;
@@ -41,7 +38,6 @@ namespace TicTacToe
             {
                 i = -1;
             }
-
             return i;
         }
         
@@ -54,11 +50,10 @@ namespace TicTacToe
             else
             {
                 _writer.PromptUser();
-                _writer.PrintBoard(_board.Spaces());
+                _writer.PrintBoard(_board.Spaces(), _board.GridSize());
                 PlayerLoop();
             }
         }
-
         public void GameLoop()
         {
             while (!_rules.IsGameOver(_board))
@@ -66,10 +61,8 @@ namespace TicTacToe
                 _board.DisplayBoard();
                 PlayerLoop();
             }
-
             PrintGameStatus();
         }
-
         private void PrintGameStatus()
         {
             if (_rules.IsWon(_board.Spaces(), Constants.X))

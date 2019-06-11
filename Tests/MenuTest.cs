@@ -6,15 +6,22 @@ namespace Tests
     [TestFixture]
     public class MenuTest
     {
+        private Menu _menu;
+        private MockConsoleWriter _writer;
+
+        [SetUp]
+        public void Setup()
+        {
+            _writer = new MockConsoleWriter();
+            _menu = new Menu(_writer);
+        }
+        
         [Test]
         public void DisplaysWelcomeMessage()
         {
-            var writer = new MockConsoleWriter();
-            var menu = new Menu(writer);
+            _menu.Welcome();
             
-            menu.Welcome();
-            
-            Assert.AreEqual("Welcome to Tic Tac Toe!", writer.LastOutput );
+            Assert.AreEqual("Welcome to Tic Tac Toe!", _writer.LastOutput );
         }
     }
 }

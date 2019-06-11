@@ -22,20 +22,37 @@ namespace Tests
             LastOutput += "Welcome to Tic Tac Toe!";
         }
 
-        public void PrintBoard(List<object> boardList)
+        public void GridOption()
         {
-            for (var i = 0; i < Constants.GridDimension * Constants.GridDimension; i += Constants.GridDimension)
-            {
-                if (i == 0) LastOutput += $"----+---+----";
+            LastOutput += "Grid Size Menu: Please type '3' for 3 x 3, '4' for 4 x 4, '5' for 5 x 5";
+        }
 
-                for (var j = i; j < i + Constants.GridDimension; j++)
+        public void PrintBoard(List<object> boardList, int gridSize)
+        {
+            for (var i = 0; i < gridSize * gridSize; i += gridSize)
+            {
+                if (i == 0) LastOutput += OutlineBuilder(gridSize);
+
+                for (var j = i; j < i + gridSize; j++)
                 {
                     if (j == i) LastOutput += "|";
                     LastOutput += $" {boardList[j]} |";
                 }
-                
-                LastOutput += "----+---+----";
+
+                LastOutput += OutlineBuilder(gridSize);
             }
+        }
+
+        private string OutlineBuilder(int gridSize)
+        {
+            var outline = "";
+            for (var i = 0; i < gridSize - 1; i++)
+            {
+                outline += Constants.BoardOutline;
+            }
+
+            outline += Constants.BoardOutlineEnd;
+            return outline;
         }
 
         public void AskForMove(char playerSymbol)

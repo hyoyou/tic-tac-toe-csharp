@@ -9,6 +9,7 @@ namespace TicTacToe
         private HumanPlayer _player2;
         private Rules _rules;
         private Game _game;
+        private int langChoice;
         private int gridSize;
 
         public Menu(IConsoleWriter writer)
@@ -26,12 +27,20 @@ namespace TicTacToe
 
         public void DisplayOptions()
         {
-            throw new System.NotImplementedException();
+            gridSize = AskForGridSize();
+        }
+
+        private int AskForGridSize()
+        {
+            _writer.GridOption();
+            return int.Parse(_reader.GetInput());
         }
 
         public Game CreateGame()
         {
-            throw new System.NotImplementedException();
+            var board = new Board(_writer, gridSize);
+            var rules = new Rules(gridSize);
+            return new Game(_writer, board, _player1, _player2, rules);
         }
     }
 }

@@ -1,9 +1,17 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TicTacToe
 {
     public class Rules
     {
+        private static int _gridSize;
+
+        public Rules(int gridSize)
+        {
+            _gridSize = gridSize;
+        }
+        
         public bool IsWon(List<object> board, char playerSymbol)
         {
             if (IsHorizontalWin(board, playerSymbol)) return true;
@@ -14,13 +22,13 @@ namespace TicTacToe
 
         private bool IsHorizontalWin(List<object> board, char playerSymbol)
         {
-            for (var i = 0; i < Constants.GridDimension; i++)
+            for (var i = 0; i < _gridSize; i++)
             {
                 var tempList = new List<object>();
                 
-                for (var j = 0; j < Constants.GridDimension; j++)
+                for (var j = 0; j < _gridSize; j++)
                 {
-                    tempList.Add(board[Constants.GridDimension * j + i]);
+                    tempList.Add(board[_gridSize * j + i]);
                 }
 
                 if (IsMatch(playerSymbol, tempList)) return true;
@@ -30,13 +38,13 @@ namespace TicTacToe
 
         private bool IsVerticalWin(List<object> board, char playerSymbol)
         {
-            for (var i = 0; i < Constants.GridDimension; i++)
+            for (var i = 0; i < _gridSize; i++)
             {
                 var tempList = new List<object>();
                 
-                for (var j = 0; j < Constants.GridDimension; j++)
+                for (var j = 0; j < _gridSize; j++)
                 {
-                    tempList.Add(board[Constants.GridDimension * i + j]);
+                    tempList.Add(board[_gridSize * i + j]);
                 }
 
                 if (IsMatch(playerSymbol, tempList)) return true;
@@ -46,22 +54,33 @@ namespace TicTacToe
 
         private bool IsLeftDiagonalWin(List<object> board, char playerSymbol)
         {
-            var tempList = new List<object> { board[0], board[4], board[8] };
+            var tempList = new List<object>();
+            
+            for (var i = 0; i < _gridSize; i++)
+            {
+                tempList.Add(board[(_gridSize + 1) * i]);
+            }
+            
             return IsMatch(playerSymbol, tempList);
         }
         
         private bool IsRightDiagonalWin(List<object> board, char playerSymbol)
         {
-            var tempList = new List<object> { board[2], board[4], board[6] };
+            var tempList = new List<object>();
+            
+            for (var i = 0; i < _gridSize; i++)
+            {
+                tempList.Add(board[(_gridSize - 1) * (i + 1)]);
+            }
+            
             return IsMatch(playerSymbol, tempList);
         }
         
         private static bool IsMatch(char playerSymbol, List<object> tempList)
         {
-            return tempList[0].Equals(playerSymbol) && tempList[1].Equals(playerSymbol) &&
-                   tempList[2].Equals(playerSymbol);
+            return tempList.All(o => Equals(playerSymbol, o));
         }
-        
+
         public bool IsTie(Board board) 
         {
             return board.AvailableMoves().Count == 0; 
