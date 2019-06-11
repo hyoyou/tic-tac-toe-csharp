@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Resources;
+using System.Threading;
 
 namespace TicTacToe
 {
@@ -13,12 +16,26 @@ namespace TicTacToe
 
         public void Welcome()
         {
-            Console.WriteLine("Welcome to Tic Tac Toe!");
+            Console.WriteLine(Properties.Strings.Welcome);
+        }
+
+        public void LanguageOption()
+        {
+            Console.WriteLine(Properties.Strings.LanguageOptions);
+        }
+
+        public void SetLanguage(string langChoice)
+        {
+            if (!langChoice.Equals("es") | !langChoice.Equals("ko"))
+            {
+                langChoice = "en";
+            }
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(langChoice);
         }
 
         public void GridOption()
         {
-            Console.WriteLine("Grid Size Menu: Please type '3' for 3 x 3, '4' for 4 x 4, '5' for 5 x 5");
+            Console.WriteLine(Properties.Strings.GridOptions);
         }
 
         public void PrintBoard(List<object> boardList, int gridSize)
@@ -29,8 +46,8 @@ namespace TicTacToe
 
                 for (var j = i; j < i + gridSize; j++)
                 {
-                    if (j == i) Console.Write("|");
-                    Console.Write($" {boardList[j]} |");
+                    if (j == i) Console.Write(Constants.CellSeparator);
+                    Console.Write($" {boardList[j]} " + Constants.CellSeparator);
                 }
 
                 Console.WriteLine(OutlineBuilder(gridSize));
@@ -39,7 +56,7 @@ namespace TicTacToe
 
         private string OutlineBuilder(int gridSize)
         {
-            var outline = "\n";
+            var outline = Constants.Newline;
             for (var i = 0; i < gridSize - 1; i++)
             {
                 outline += Constants.BoardOutline;
@@ -51,22 +68,26 @@ namespace TicTacToe
 
         public void AskForMove(char playerSymbol)
         {
-            Console.WriteLine($"Player {playerSymbol}, please make your move:");
+            Console.WriteLine(playerSymbol == Constants.X
+                ? Properties.Strings.AskForMoveX
+                : Properties.Strings.AskForMoveO);
         }
 
         public void PromptUser()
         {
-            Console.WriteLine("Invalid move, please enter a different move:");
+            Console.WriteLine(Properties.Strings.InvalidMove);
         }
 
         public void PrintCongratulations(char playerSymbol)
         {
-            Console.WriteLine($"Congratulations player {playerSymbol}, you won!!");
+            Console.WriteLine(playerSymbol == Constants.X
+                ? Properties.Strings.CongratulateX
+                : Properties.Strings.CongratulateO);
         }
 
         public void PrintTieGame()
         {
-            Console.WriteLine("Cat's game!");
+            Console.WriteLine(Properties.Strings.TieGame);
         }
     }
 }

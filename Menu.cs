@@ -4,18 +4,15 @@ namespace TicTacToe
     {
         private static IConsoleWriter _writer;
         private IConsoleReader _reader;
-        private Board _board;
         private HumanPlayer _player1;
         private HumanPlayer _player2;
-        private Rules _rules;
-        private Game _game;
-        private int langChoice;
+        private string langChoice;
         private int gridSize;
 
-        public Menu(IConsoleWriter writer)
+        public Menu(IConsoleWriter writer, IConsoleReader reader)
         {
             _writer = writer;
-            _reader = new ConsoleReader();
+            _reader = reader;
             _player1 = new HumanPlayer(Constants.X, _reader, _writer);
             _player2 = new HumanPlayer(Constants.O, _reader, _writer);
         }
@@ -27,14 +24,34 @@ namespace TicTacToe
 
         public void DisplayOptions()
         {
-            gridSize = AskForGridSize();
+            LanguagePreferenceMenu();
+            langChoice = GetLanguagePreference();
+            _writer.SetLanguage(langChoice);
+            GridSizePreferenceMenu();
+            gridSize = GetGridSizePreference();
         }
 
-        private int AskForGridSize()
+        public void LanguagePreferenceMenu()
+        {
+            _writer.LanguageOption();
+        }
+        
+        private string GetLanguagePreference()
+        {
+            return _reader.GetInput();
+        }
+
+        public void GridSizePreferenceMenu()
         {
             _writer.GridOption();
+        }
+        
+        
+        private int GetGridSizePreference()
+        {
             return int.Parse(_reader.GetInput());
         }
+
 
         public Game CreateGame()
         {

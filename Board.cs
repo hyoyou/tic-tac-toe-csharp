@@ -32,7 +32,7 @@ namespace TicTacToe
             var boardListWithCell = new List<object>();
             for (var i = 0; i < boardList.Count; i++)
             {
-                if (boardList[i].Equals(" "))
+                if (boardList[i].Equals(Constants.Empty))
                 {
                     boardListWithCell.Add(i + 1);
                 }

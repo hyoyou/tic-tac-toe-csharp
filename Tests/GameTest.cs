@@ -67,6 +67,24 @@ namespace Tests
         }
         
         [Test]
+        public void PlayerLoopAsksForPlayersMoveInSpanish()
+        {
+            _writer.SetLanguage("es");
+            _game.PlayerLoop();
+
+            Assert.AreEqual("Jugador X, por favor haz tu movimiento:", _writer.LastOutput);
+        }
+
+        [Test]
+        public void PlayerLoopAsksForPlayersMoveInKorean()
+        {
+            _writer.SetLanguage("ko");
+            _game.PlayerLoop();
+
+            Assert.AreEqual("플레이어 X, 원하시는 칸을 선택해주세요:", _writer.LastOutput);
+        }
+        
+        [Test]
         public void InvokesGameLoopUntilGameOverWhenPlayerXWins()
         {
             _board.MakeMove(1, Constants.X);
@@ -78,10 +96,42 @@ namespace Tests
             
             playerXWinGame.GameLoop();
             
-            Assert.AreEqual("Congratulations player X, you won!!", _writer.LastOutput);
+            Assert.AreEqual("Congratulations Player X, you won!!", _writer.LastOutput);
             Assert.True(_rules.IsWon(_board.Spaces(), Constants.X));
             Assert.False(_rules.IsWon(_board.Spaces(), Constants.O));
             Assert.True(_rules.IsGameOver(_board));
+        }
+        
+        [Test]
+        public void CongratulatesPlayerXWinInSpanish()
+        {
+            _writer.SetLanguage("es");
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(4, Constants.O);
+            _board.MakeMove(9, Constants.X);
+            var playerXWinGame = new Game(_writer, _board, _player1, _player2, _rules);
+            
+            playerXWinGame.GameLoop();
+
+            Assert.AreEqual("¡Felicidades Jugador X, ganaste!", _writer.LastOutput);
+        }
+
+        [Test]
+        public void CongratulatesPlayerXWinInKorean()
+        {
+            _writer.SetLanguage("ko");
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(4, Constants.O);
+            _board.MakeMove(9, Constants.X);
+            var playerXWinGame = new Game(_writer, _board, _player1, _player2, _rules);
+            
+            playerXWinGame.GameLoop();
+
+            Assert.AreEqual("축하합니다 플레이어 X, 당신이 이겼습니다!", _writer.LastOutput);
         }
         
         [Test]
@@ -97,10 +147,44 @@ namespace Tests
             
             playerOWinGame.GameLoop();
             
-            Assert.AreEqual("Congratulations player O, you won!!", _writer.LastOutput);
+            Assert.AreEqual("Congratulations Player O, you won!!", _writer.LastOutput);
             Assert.True(_rules.IsWon(_board.Spaces(), Constants.O));
             Assert.False(_rules.IsWon(_board.Spaces(), Constants.X));
             Assert.True(_rules.IsGameOver(_board));
+        }
+        
+        [Test]
+        public void CongratulatesPlayerOWinInSpanish()
+        {
+            _writer.SetLanguage("es");
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(5, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
+            var playerXWinGame = new Game(_writer, _board, _player1, _player2, _rules);
+            
+            playerXWinGame.GameLoop();
+
+            Assert.AreEqual("¡Felicidades Jugador O, ganaste!", _writer.LastOutput);
+        }
+
+        [Test]
+        public void CongratulatesPlayerOWinInKorean()
+        {
+            _writer.SetLanguage("ko");
+            _board.MakeMove(1, Constants.X);
+            _board.MakeMove(2, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(5, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
+            var playerXWinGame = new Game(_writer, _board, _player1, _player2, _rules);
+            
+            playerXWinGame.GameLoop();
+
+            Assert.AreEqual("축하합니다 플레이어 O, 당신이 이겼습니다!", _writer.LastOutput);
         }
         
         [Test]
@@ -124,6 +208,46 @@ namespace Tests
             Assert.False(_rules.IsWon(_board.Spaces(), Constants.O));
             Assert.True(_rules.IsTie(_board));
             Assert.True(_rules.IsGameOver(_board));
+        }
+        
+        [Test]
+        public void DisplaysTieGameMessageInSpanish()
+        {
+            _writer.SetLanguage("es");
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(1, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(7, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
+            _board.MakeMove(9, Constants.X);
+            _board.MakeMove(6, Constants.O);
+            _board.MakeMove(2, Constants.X);
+            var tieGame = new Game(_writer, _board, _player1, _player2, _rules);
+            
+            tieGame.GameLoop();
+
+            Assert.AreEqual("El juego es un empate.", _writer.LastOutput);
+        }
+
+        [Test]
+        public void DisplaysTieGameMessageInKorean()
+        {
+            _writer.SetLanguage("ko");
+            _board.MakeMove(5, Constants.X);
+            _board.MakeMove(1, Constants.O);
+            _board.MakeMove(3, Constants.X);
+            _board.MakeMove(7, Constants.O);
+            _board.MakeMove(4, Constants.X);
+            _board.MakeMove(8, Constants.O);
+            _board.MakeMove(9, Constants.X);
+            _board.MakeMove(6, Constants.O);
+            _board.MakeMove(2, Constants.X);
+            var tieGame = new Game(_writer, _board, _player1, _player2, _rules);
+            
+            tieGame.GameLoop();
+
+            Assert.AreEqual("동점 게임입니다.", _writer.LastOutput);
         }
     }
 }

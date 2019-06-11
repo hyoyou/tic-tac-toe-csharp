@@ -5,6 +5,8 @@ namespace TicTacToe
     {
         void WriteLine(string s);
         void Welcome();
+        void LanguageOption();
+        void SetLanguage(string langChoice);
         void GridOption();
         void PrintBoard(List<object> boardList, int boardSize);
         void AskForMove(char playerSymbol);

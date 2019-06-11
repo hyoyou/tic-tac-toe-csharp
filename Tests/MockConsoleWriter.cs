@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using TicTacToe;
 
 namespace Tests
@@ -19,12 +21,22 @@ namespace Tests
 
         public void Welcome()
         {
-            LastOutput += "Welcome to Tic Tac Toe!";
+            LastOutput += TicTacToe.Properties.Strings.Welcome;
+        }
+
+        public void LanguageOption()
+        {
+            LastOutput += TicTacToe.Properties.Strings.LanguageOptions;
+        }
+
+        public void SetLanguage(string langChoice)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(langChoice);
         }
 
         public void GridOption()
         {
-            LastOutput += "Grid Size Menu: Please type '3' for 3 x 3, '4' for 4 x 4, '5' for 5 x 5";
+            LastOutput += TicTacToe.Properties.Strings.GridOptions;
         }
 
         public void PrintBoard(List<object> boardList, int gridSize)
@@ -35,8 +47,8 @@ namespace Tests
 
                 for (var j = i; j < i + gridSize; j++)
                 {
-                    if (j == i) LastOutput += "|";
-                    LastOutput += $" {boardList[j]} |";
+                    if (j == i) LastOutput += Constants.CellSeparator;
+                    LastOutput += $" {boardList[j]} " + Constants.CellSeparator;
                 }
 
                 LastOutput += OutlineBuilder(gridSize);
@@ -45,7 +57,7 @@ namespace Tests
 
         private string OutlineBuilder(int gridSize)
         {
-            var outline = "";
+            var outline = Constants.Empty;
             for (var i = 0; i < gridSize - 1; i++)
             {
                 outline += Constants.BoardOutline;
@@ -57,22 +69,26 @@ namespace Tests
 
         public void AskForMove(char playerSymbol)
         {
-            LastOutput = $"Player {playerSymbol}, please make your move:";
+            LastOutput = (playerSymbol == Constants.X
+                ? TicTacToe.Properties.Strings.AskForMoveX
+                : TicTacToe.Properties.Strings.AskForMoveO);
         }
 
         public void PromptUser()
         {
-            LastOutput = "Invalid move, please enter a different move:";
+            LastOutput = TicTacToe.Properties.Strings.InvalidMove;
         }
 
         public void PrintCongratulations(char playerSymbol)
         {
-            LastOutput = $"Congratulations player {playerSymbol}, you won!!";
+            LastOutput = playerSymbol == Constants.X
+                ? TicTacToe.Properties.Strings.CongratulateX
+                : TicTacToe.Properties.Strings.CongratulateO;
         }
 
         public void PrintTieGame()
         {
-            LastOutput = "Cat's game!";
+            LastOutput = TicTacToe.Properties.Strings.TieGame;
         }
     }
 }
