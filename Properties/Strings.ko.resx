@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="GridOptions" xml:space="preserve">
+        <value>틱택토 보드 크기 메뉴 : 3 x 3 보드를 선택하시려면 '3'을 입력하세요, 4 x 4 보드를 선택하시려면 '4'를 입력하세요, 5 x 5 보드를 선택하시려면 '5'를 입력하세요</value>
+    </data>
+    <data name="AskForMoveX" xml:space="preserve">
+        <value>플레이어 X, 원하시는 칸을 선택해주세요:</value>
+    </data>
+    <data name="AskForMoveO" xml:space="preserve">
+        <value>플레이어 O, 원하시는 칸을 선택해주세요:</value>
+    </data>
+    <data name="InvalidMove" xml:space="preserve">
+        <value>선택하신 칸으로 이동할 수 없습니다. 다른 칸을 선택해주세요:</value>
+    </data>
+    <data name="CongratulateX" xml:space="preserve">
+        <value>축하합니다 플레이어 X, 당신이 이겼습니다!</value>
+    </data>
+    <data name="CongratulateO" xml:space="preserve">
+        <value>축하합니다 플레이어 O, 당신이 이겼습니다!</value>
+    </data>
+    <data name="TieGame" xml:space="preserve">
+        <value>동점 게임입니다.</value>
+    </data>
+</root>
