@@ -11,12 +11,7 @@ namespace Tests
         
         public MockConsoleWriter()
         {
-            LastOutput = "";
-        }
-
-        public void WriteLine(string s)
-        {
-            LastOutput += s;
+            LastOutput = Constants.Empty;
         }
 
         public void Welcome()

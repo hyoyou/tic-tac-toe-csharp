@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Resources;
 using System.Threading;
 
 namespace TicTacToe
@@ -9,11 +8,6 @@ namespace TicTacToe
     
     public class ConsoleWriter : IConsoleWriter
     {
-        public void WriteLine(string s)
-        {
-            Console.WriteLine(s);
-        }
-
         public void Welcome()
         {
             Console.WriteLine(Properties.Strings.Welcome);
